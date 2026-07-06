@@ -1,21 +1,19 @@
 const ApiResponse = require("../../../common/responses/ApiResponse");
 const STATUS_CODE = require("../../../common/constants/statusCodes");
-// const MESSAGES = require("../../../common/constants/message");
+const {updateUserStatusService} = require("../services/user-status.service");
 
-const {updateLicenseService} = require("../services/update-license.service");
-
-const updateLicense = async(req, res, next) => {
+const updateUserStaus = async(req, res, next) => {
     try {
-        const data = await updateLicenseService(
+        const user = await updateUserStatusService(
             req.params.id,
-            req.body,
+            req.body.isActive,
             req.user
-        )
+        );
         return res.status(STATUS_CODE.OK).json(
             new ApiResponse(
                 STATUS_CODE.OK,
-                "License updated successfully",
-                data
+                "user status updated successfully",
+                user
             )
         )
     } catch (error) {
@@ -23,4 +21,4 @@ const updateLicense = async(req, res, next) => {
     }
 }
 
-module.exports = {updateLicense};
+module.exports = {updateUserStaus};
