@@ -65,12 +65,12 @@ const getLicenseService = async(query, loggedInUser) => {
         }
     }
 
-    const result = await findLicenses({
+    const result = await findLicenses(
         filter,
-        page:Number(page),
-        limit: Number(limit)
-    })
-
+        Number(page),
+        Number(limit)
+    )
+    return reusult;
 }
 
 module.exports = {getLicenseService};

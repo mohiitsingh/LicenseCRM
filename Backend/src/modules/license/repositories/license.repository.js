@@ -99,6 +99,18 @@ const findRecentLicenses = (filter, limit=10) => {
     .limit(limit)
 }
 
+const updateLicenseExpiryDate = async(licenseId, renewedExpiryDate) => {
+  return await License.findByIdAndUpdate(
+    licenseId,
+    {
+      expiryDate: renewedExpiryDate
+    },
+    {
+      new: true
+    }
+  )
+}
+
 module.exports = {
   saveLicense,
   findLicenseByNumber,
@@ -111,5 +123,6 @@ module.exports = {
   softDeleteLicense,
   hasActiveOrRenewalLicenses,
   countLicense,
-  findRecentLicenses
+  findRecentLicenses,
+  updateLicenseExpiryDate
 };

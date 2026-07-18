@@ -18,4 +18,9 @@ const loginUser = async(overides = {}) => {
         });
 }
 
+const user = await registerUser();
+const token =  await loginUser();
+
+await 
+
 module.exports = {registerUser, loginUser};

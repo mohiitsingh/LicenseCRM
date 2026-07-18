@@ -11,6 +11,7 @@ const {upadateLicenseValidation} = require("../validations/update.validation");
 const {renewLicense} = require("../controllers/renew-license.controller");
 const {renewLicenseValidation} = require("../validations/renew-license.validation");
 const {deleteLicense} = require("../controllers/delete-license.controller");
+const {renewLicenseController} = require("../controllers/renewLicense.controller");
 const {
   createLicenseValidation,
 } = require("../validations/create-license.validation");
@@ -63,6 +64,13 @@ router.delete(
   authenticate,
   authorize(ROLES.ADMIN, ROLES.COORDINATOR, ROLES.USER),
   deleteLicense
+);
+
+router.post(
+  "/:licenseId/renew",
+  authenticate,
+  renewLicenseValidation,
+  renewLicenseController
 )
 
 module.exports = router;

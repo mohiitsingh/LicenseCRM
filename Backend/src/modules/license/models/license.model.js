@@ -59,6 +59,24 @@ const licenseSchema = new mongoose.Schema(
         deletedAt: {
             type: Date,
             default: null
+        },
+        department: {
+            type: String,
+        },
+        vendor: {
+            type: String
+        },
+        reminderDays: {
+            type: Number,
+            default: 30
+        },
+        cost: {
+            type: Number,
+            default: 0
+        },
+        currency: {
+            type: String,
+            default: "INR"
         }
     },
     {
